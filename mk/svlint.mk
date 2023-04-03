@@ -4,9 +4,11 @@ include mk/common.mk
 default: lint
 
 .PHONY: lint
-lint: $(addprefix ${OUTDIR}/,$(addsuffix .svlint_lint.txt,${TESTCASE_NAMES}))
+lint: $(addprefix ${OUTDIR}/,$(addsuffix .svlint_lint.stdout,${TESTCASE_NAMES}))
 
-${OUTDIR}/%.svlint_lint.txt: testcases/%.sv
-	mkdir -p ${OUTDIR}
+#--version: Display the tool version.
+#https://github.com/dalance/svlint/blob/master/MANUAL.md
+
+${OUTDIR}/%.svlint_lint.stdout: testcases/%.sv | ${OUTDIR}
 	svlint --version > $@
-	-svlint $^ >> $@ 2>&1
+	-svlint $^ ${REDIRECT}
