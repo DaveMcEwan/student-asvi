@@ -9,6 +9,5 @@ compile: $(addprefix ${OUTDIR}/,$(addsuffix \
 export TESTCASE = $^
 export TESTCASE_REPORT = $@
 
-${OUTDIR}/%.vcformal_compile.log: testcases/%.sv
-	mkdir -p ${OUTDIR}
+${OUTDIR}/%.vcformal_compile.log: testcases/%.sv | ${OUTDIR}
 	-vcf -batch -out_dir vcformal -f tcl/vcformal_batch_run.tcl
