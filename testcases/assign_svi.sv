@@ -7,9 +7,9 @@ interface I;
   logic y;
   logic x;
 
-  always_comb z = Z;      // Constant
-  always_comb y = 1'b1;   // Literal
-  always_comb x = z;      // Signal
+  assign z = Z;      // Constant
+  assign y = 1'b1;   // Literal
+  assign x = z;      // Signal
 
 endinterface
 
